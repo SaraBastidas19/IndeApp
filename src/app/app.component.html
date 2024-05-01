@@ -11,7 +11,7 @@
             background-color: #ffffff; /* Cambio de color de fondo a blanco */
             overflow: hidden; /* Evitar el desplazamiento vertical */
         }
-       
+        
         .frame-right {
             width: 50%; /* Marco derecho ocupa la mitad del ancho de la página */
             height: 100vh; /* Marco derecho ocupa toda la altura de la página */
@@ -19,6 +19,55 @@
             top: 0;
             right: 0;
             background-color: #ffffff; /* Color de fondo del marco derecho */
+            display: flex;
+            flex-direction: column; /* Alinear los elementos en columna */
+            align-items: flex-start; /* Alinear el contenido en la parte superior */
+            justify-content: flex-start; /* Alinear el contenido a la izquierda */
+            padding: 20px; /* Añadir un poco de espacio alrededor del contenido */
+        }
+        .title {
+            font-family: Lalezar, sans-serif; /* Fuente del título */
+            font-size: 110px; /* Tamaño de la fuente */
+            color: #E1AD2A; /* Color de las letras "<" y ">" */
+            letter-spacing: 0; /* Eliminar el espacio entre las letras */
+        }
+        .title span.green {
+            color: #99B837; /* Color de las letras "INDE" */
+            letter-spacing: 0; /* Eliminar el espacio entre las letras */
+        }
+        .title span.blue {
+            color: #5896D8; /* Color de las letras "APP" */
+            letter-spacing: 0; /* Eliminar el espacio entre las letras */
+        }
+        .subtitle {
+            font-family: Inter, sans-serif; /* Fuente del subtítulo */
+            font-size: 40px; /* Tamaño del subtítulo */
+            font-weight: 400; /* Grosor normal de la fuente */
+            margin-top: -20px; /* Espacio superior negativo */
+            margin-left: 35px; /* Ajustar margen izquierdo */
+        }
+        .emoji {
+            font-size: 40px; /* Tamaño del emoji */
+        }
+        .text {
+            font-family: Inter, sans-serif; /* Fuente del texto */
+            font-size: 20px; /* Tamaño del texto */
+            font-weight: 400; /* Grosor normal de la fuente */
+            color: rgba(0, 0, 0, 0.6); /* Color del texto con transparencia al 60% */
+            margin-left: 35px; /* Ajustar margen izquierdo */
+            margin-top: 10px; /* Espacio superior */
+        }
+        textarea {
+            width: calc(100% - 70px); /* Ancho del área de texto */
+            height: 30px; /* Altura del área de texto */
+            margin-left: 35px; /* Ajustar margen izquierdo */
+            margin-top: 10px; /* Espacio superior */
+            font-family: Inter, sans-serif; /* Fuente del área de texto */
+            font-size: 1.2vw; /* Tamaño del texto del área de texto */
+            padding: 1vw; /* Añadir un poco de espacio interior */
+            border: 2px solid rgba(0, 0, 0, 0.7); /* Borde del área de texto con transparencia al 70% */
+            border-radius: 5px; /* Borde redondeado */
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo del área de texto con transparencia al 70% */
         }
         .image-container {
             width: 45%; /* Imagen ocupa el 45% del ancho de la página */
@@ -34,8 +83,12 @@
     </style>
 </head>
 <body>
-    <div class="frame-left"></div> <!-- Marco de la mitad izquierda -->
-    <div class="frame-right"></div> <!-- Marco de la mitad derecha -->
+    <div class="frame-right">
+        <div class="title">&lt;<span class="green">INDE</span><span class="blue">APP</span>&gt;</div> <!-- Título de la aplicación -->
+        <div class="subtitle">Bienvenido a indeapp! <span class="emoji">👋</span></div> <!-- Subtítulo -->
+        <div class="text">Inicia sesión en tu cuenta y conoce todo lo que ofrecemos para ti!</div> <!-- Texto -->
+        <textarea placeholder="Ingrese su tipo de documento..." rows="1"></textarea> <!-- Área de texto -->
+    </div> <!-- Marco de la mitad derecha -->
     <div class="image-container"></div> <!-- Contenedor de imagen en la mitad izquierda -->
 </body>
 </html>
