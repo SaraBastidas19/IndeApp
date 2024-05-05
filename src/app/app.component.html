@@ -57,17 +57,22 @@
             margin-left: 35px; /* Ajustar margen izquierdo */
             margin-top: 10px; /* Espacio superior */
         }
-        textarea {
-            width: calc(100% - 70px); /* Ancho del área de texto */
-            height: 30px; /* Altura del área de texto */
+        select, textarea {
+            width: 590px; /* Ancho del menú desplegable y del área de texto */
+            height: 45px; /* Altura del menú desplegable y del área de texto */
             margin-left: 35px; /* Ajustar margen izquierdo */
-            margin-top: 10px; /* Espacio superior */
-            font-family: Inter, sans-serif; /* Fuente del área de texto */
-            font-size: 1.2vw; /* Tamaño del texto del área de texto */
-            padding: 1vw; /* Añadir un poco de espacio interior */
-            border: 2px solid rgba(0, 0, 0, 0.7); /* Borde del área de texto con transparencia al 70% */
+            margin-top: 20px; /* Espacio superior */
+            margin-bottom: 20px; /* Espacio inferior */
+            font-family: Inter, sans-serif; /* Fuente del menú desplegable y del área de texto */
+            font-size: 20px; /* Tamaño del texto del menú desplegable y del área de texto */
+            padding: 10px; /* Añadir un poco de espacio interior */
+            text-align: left; /* Alinear el texto horizontalmente */
+            border: 2px solid rgba(0, 0, 0, 0.7); /* Borde del menú desplegable y del área de texto con transparencia al 70% */
             border-radius: 5px; /* Borde redondeado */
-            background-color: rgba(255, 255, 255, 0.7); /* Fondo del área de texto con transparencia al 70% */
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo del menú desplegable y del área de texto con transparencia al 70% */
+            box-sizing: border-box; /* Incluir el borde en el cálculo del tamaño */
+            resize: none; /* Deshabilitar la redimensión del menú desplegable y del área de texto */
+            overflow-y: hidden; /* Eliminar la barra de desplazamiento vertical */
         }
         .image-container {
             width: 45%; /* Imagen ocupa el 45% del ancho de la página */
@@ -87,7 +92,14 @@
         <div class="title">&lt;<span class="green">INDE</span><span class="blue">APP</span>&gt;</div> <!-- Título de la aplicación -->
         <div class="subtitle">Bienvenido a indeapp! <span class="emoji">👋</span></div> <!-- Subtítulo -->
         <div class="text">Inicia sesión en tu cuenta y conoce todo lo que ofrecemos para ti!</div> <!-- Texto -->
-        <textarea placeholder="Ingrese su tipo de documento..." rows="1"></textarea> <!-- Área de texto -->
+        <select name="tipo_documento">
+            <option value="cc">CC</option>
+            <option value="ti">TI</option>
+            <option value="cedula_extranjera">Cédula de Extranjería</option>
+        </select> <!-- Menú desplegable -->
+        <textarea placeholder="Número de documento" rows="1"></textarea> <!-- Área de texto -->
+        <textarea placeholder="Correo electrónico" rows="1"></textarea> <!-- Área de texto -->
+        <textarea placeholder="Contraseña" rows="1"></textarea> <!-- Área de texto -->
     </div> <!-- Marco de la mitad derecha -->
     <div class="image-container"></div> <!-- Contenedor de imagen en la mitad izquierda -->
 </body>
