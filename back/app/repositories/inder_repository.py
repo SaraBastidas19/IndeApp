@@ -6,6 +6,14 @@ class InderRelationalRepository:
     def __init__(self):
         self.session = Session().session
 
+    # 1. Obtener todos los roles existente
+    def get_all_roles(self):
+        results = self.session.query(Rol).all()
+        response = []
+        for result in results:
+            response.append(self.model_as_dict(result))
+        return response
+
     # 1. Obtener todos los cursos disponibles
     def get_all_cursos(self):
         results = self.session.query(Curso).all()
@@ -92,22 +100,42 @@ class InderRelationalRepository:
         self.session.commit()
         return {'message': f'El docente con id {id} fue eliminado con éxito'}
     
-    # 9. Obtener Estudiantes registrados   
-    def get_usuario_by_rol(self, rol: str):
-        where_conditions = self.get_where_location_conditions(rol)
+    # 9. Obtener usuarios registrados   
+    def get_all_usuarios(self):
+        results = self.session.query(Usuario).all()
+        response = []
+        for result in results:
+            response.append(self.model_as_dict(result))
+        return response
 
-        if len(where_conditions) > 0:
-            full_query = self.get_full_query()
-            results = full_query.filter(*where_conditions).all()
-            response = []
-            for result in results:
-                response.append(
-                    {
-                        **self.model_as_dict(result[0]),
-                    }
-                )
-            return response
-        return self.get_all_usuarios()
+    # 6. Crear un nuevo usuario
+    def create_usuario(self, estudiante: dict):
+        estudiante_item = {
+            'usuario_id': estudiante['usuario_id'],
+            'nombre': estudiante['nombre'],
+            'email': estudiante['email'],
+            'tipo_documento': estudiante['tipo_documento'],
+            'numero_documento': estudiante['numero_documento'],
+            'fecha_nacimiento': estudiante['fecha_nacimiento'],
+            'rol_id': estudiante['rol_id']
+        }
+        estudiante_object = Usuario(**estudiante_item)
+        self.session.add(estudiante_object)
+        self.session.commit()
+        return {'message': 'El usuario ha sido creado con éxito'}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     # Funcion para transformar objeto de un modelo a diccionario 

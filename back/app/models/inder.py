@@ -18,7 +18,7 @@ class Usuario(Base):
     usuario_id = Column(Integer, primary_key=True)
     nombre = Column(String(100), nullable=False)
     email = Column(String(100), nullable=False)
-    contrasena = Column(String(100), nullable=False)
+    # contrasena = Column(String(100), nullable=False)
     tipo_documento = Column(String(50), nullable=False)
     numero_documento = Column(Integer, nullable=False)
     fecha_nacimiento = Column(DateTime, nullable=False)

@@ -4,7 +4,11 @@ class InderService:
     def __init__(self):
         self.repository = InderRelationalRepository()
 
-    # 1. Obtener reactores registrados.
+    # 1. Obtener roles disponibles.
+    def get_all_roles(self):
+        return self.repository.get_all_roles()
+    
+    # 2. Obtener cursos registrados.
     def get_all_cursos(self):
         return self.repository.get_all_cursos()
     
@@ -37,8 +41,22 @@ class InderService:
         return self.repository.delete_docente_by_id(docente_id)
     
     # 9. Obtener Estudiantes registrados
-    def get_all_estudiantes(self):
-        return self.repository.get_all_estudiantes()
+    def get_all_usuarios(self):
+        return self.repository.get_all_usuarios()
+    
+    # 10. Crear un nuevo estudiante
+    def create_usuario(self, estudiante: dict):
+        return self.repository.create_usuario(estudiante)
+
+
+
+
+
+
+
+
+
+
     
     # def get_reactor_by_id(self, id: int):
     #     return self.repository.get_reactor_by_id(id)

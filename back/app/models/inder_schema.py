@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Union
-from datetime import datetime
+from datetime import datetime, date
 
 
 class CursosResponseModel(BaseModel):
@@ -15,15 +15,17 @@ class DocenteResponseModel(BaseModel):
     nombre:                str
     especialidad:          str
 
-class EstudianteResponseModel(BaseModel):
+class UsuarioResponseModel(BaseModel):
     usuario_id:         int
     nombre:             str
     email:              str
     tipo_documento:     str
     numero_documento:   int
-    fecha_nacimiento:   datetime
+    fecha_nacimiento:   date
+    rol_id:             int
 
-# class LocationResponseModel(BaseModel):
-#     ciudad:                     Union[str, None]
-#     pais:                       str
+class RolesResponseModel(BaseModel):
+    rol_id:             Union[int, None]
+    nombre:             str
+    descripcion:        str
 

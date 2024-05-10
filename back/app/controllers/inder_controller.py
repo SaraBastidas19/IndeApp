@@ -1,12 +1,22 @@
 from typing import List
 from fastapi import FastAPI, status, Path, Query, Body, Depends
-from back.app.models.inder_schema import CursosResponseModel, DocenteResponseModel, EstudianteResponseModel
+from back.app.models.inder_schema import CursosResponseModel, DocenteResponseModel, UsuarioResponseModel, RolesResponseModel
 from back.app.services.inder_service import InderService
 from back.app.exceptions.exceptions import Exceptions
 
 app = FastAPI()
 
 app.add_exception_handler(Exception, handler=Exceptions().base_error)
+
+# 1. Obtener roles existentes
+@app.get(
+        path='/roles',
+        status_code=status.HTTP_200_OK,
+        response_model=List[RolesResponseModel],
+)
+async def get_all_roles():
+    return InderService().get_all_roles()
+
 
 # 1. Obtener cursos registrados.
 @app.get(
@@ -41,47 +51,77 @@ async def update_curso(curso: CursosResponseModel=Body(...), id: int = Path(...)
 async def delete_curso_by_id(id: int = Path(...)):
     return InderService().delete_curso_by_id(id)
 
-# 5. Obtener Docentes registrados
+# 9. Obtener Usuarios registrados
 @app.get(
-        path='/docentes',
+        path='/usuarios',
         status_code=status.HTTP_200_OK,
-        response_model=List[DocenteResponseModel],
+        response_model=List[UsuarioResponseModel],
 )
-async def get_all_docentes():
-    return InderService().get_all_docentes()
+async def get_all_usuarios():
+    return InderService().get_all_usuarios()
 
-# 6. Crear un nuevo docente
+# 6. Crear un nuevo usuario
 @app.post(
-        path='/docentes',
+        path='/usuarios',
         status_code=status.HTTP_201_CREATED,
 )
-async def create_docente(docente: DocenteResponseModel=Body(...)):
-    return InderService().create_docente(docente.model_dump())
+async def create_usuario(estudiante: UsuarioResponseModel=Body(...)):
+    return InderService().create_usuario(estudiante.model_dump())
 
-# 7. Actualizar un curso existente
-@app.put(
-        path='/docentes/{id}',
-        status_code=status.HTTP_200_OK,
-)
-async def update_docente(docente: DocenteResponseModel=Body(...), id: int = Path(...)):
-    return InderService().update_docente(docente.model_dump(), id)
 
-# 8. Eliminar un curso existente.
-@app.delete(
-        path='/docentes/{id}',
-        status_code=status.HTTP_200_OK,
-)
-async def delete_docente_by_id(id: int = Path(...)):
-    return InderService().delete_docente_by_id(id)
+# # 5. Obtener Docentes registrados
+# @app.get(
+#         path='/docentes',
+#         status_code=status.HTTP_200_OK,
+#         response_model=List[DocenteResponseModel],
+# )
+# async def get_all_docentes():
+#     return InderService().get_all_docentes()
 
-# 9. Obtener Estudiantes registrados
-@app.get(
-        path='/estudiantes',
-        status_code=status.HTTP_200_OK,
-        response_model=List[EstudianteResponseModel],
-)
-async def get_all_estudiantes():
-    return InderService().get_all_estudiantes()
+# # 6. Crear un nuevo docente
+# @app.post(
+#         path='/docentes',
+#         status_code=status.HTTP_201_CREATED,
+# )
+# async def create_docente(docente: DocenteResponseModel=Body(...)):
+#     return InderService().create_docente(docente.model_dump())
+
+# # 7. Actualizar un docente existente
+# @app.put(
+#         path='/docentes/{id}',
+#         status_code=status.HTTP_200_OK,
+# )
+# async def update_docente(docente: DocenteResponseModel=Body(...), id: int = Path(...)):
+#     return InderService().update_docente(docente.model_dump(), id)
+
+# # 8. Eliminar un docente existente.
+# @app.delete(
+#         path='/docentes/{id}',
+#         status_code=status.HTTP_200_OK,
+# )
+# async def delete_docente_by_id(id: int = Path(...)):
+#     return InderService().delete_docente_by_id(id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 6. Obtener tipos de reactores registrados.
 # @app.get(
